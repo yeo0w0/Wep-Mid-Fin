@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>InfoSec Hub | Network Security</title>
+</head>
+<body class="dark-theme sub-page">
+    
+    <div class="bg-gradient-overlay"></div>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-shield-halved"></i> InfoSec Hub
+            </a>
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#none" class="active">Study <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="forensics.html">Forensics</a></li>
+                            <li><a href="pwnable.html">Pwnable</a></li>
+                            <li><a href="reversing.html">Reversing</a></li>
+                            <li><a href="hardening.html">Hardening</a></li>
+                            <li><a href="network.html" class="active">Network</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="team.html">Portfolio</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <aside class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <h2>Menu</h2>
+            <button id="close-btn" class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="forensics.html">Forensics</a></li>
+            <li><a href="pwnable.html">Pwnable</a></li>
+            <li><a href="reversing.html">Reversing</a></li>
+            <li><a href="hardening.html">Hardening</a></li>
+            <li><a href="network.html" class="active">Network</a></li>
+            <li><a href="team.html">Portfolio</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <section class="page-header" style="background-image: linear-gradient(rgba(26, 28, 44, 0.85), rgba(26, 28, 44, 0.98)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop');">
+            <div class="page-header-content text-center">
+                <span class="category-badge success-badge">Defensive Domain</span>
+                <h1 class="gradient-text">Network Security</h1>
+                <p>패킷 단위의 정밀한 통제와 제로 트러스트(Zero Trust) 아키텍처를 통한 인프라 방어 기술</p>
+                <div class="author-info">
+                    <img src="/hayul_img.png" alt="조하율" class="author-avatar">
+                    <span>Written by <strong>조하율</strong></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-container">
+            
+            <article class="content-block intro-block">
+                <h2>1. 패러다임의 변화: 제로 트러스트 (Zero Trust)</h2>
+                <p>전통적인 네트워크 보안은 외부망은 위험하고 내부망은 안전하다는 '경계형(Perimeter) 방어' 모델을 따랐습니다. 그러나 내부자 위협과 클라우드 도입으로 경계가 모호해지면서, <strong>"아무것도 신뢰하지 않고 항상 검증한다(Never Trust, Always Verify)"</strong>는 제로 트러스트 아키텍처(ZTA)가 글로벌 표준으로 자리 잡았습니다.</p>
+                <ul class="feature-list mt-15">
+                    <li><strong>마이크로 세그멘테이션 (Micro-segmentation):</strong> 네트워크를 아주 작은 단위(VM, 컨테이너 단위)로 쪼개어, 공격자가 내부에 침투하더라도 다른 구역으로 이동(Lateral Movement)하지 못하게 격리하는 핵심 기술입니다.</li>
+                    <li><strong>소프트웨어 정의 경계 (SDP):</strong> 전통적인 VPN을 대체하며, 사용자의 신원(Identity)과 기기의 보안 상태를 검증한 후에만 애플리케이션 접근을 허용합니다.</li>
+                </ul>
+            </article>
+
+            <article class="content-block bg-darker">
+                <h2>2. 방화벽(Firewall)의 진화 과정</h2>
+                <p class="block-desc">OSI 7계층에서 방화벽이 패킷을 검사하는 방식은 3세대에 걸쳐 발전해 왔습니다.</p>
+                
+                <div class="memory-grid mt-15">
+                    <div class="memory-segment" style="border-left-color: #7f8c8d;">
+                        <h3>1세대: Packet Filtering</h3>
+                        <p><strong>L3/L4 계층:</strong> 패킷의 출발지/목적지 IP와 Port만 단순 비교하여 차단합니다. 빠르지만, 패킷의 문맥(Context)을 이해하지 못해 IP 스푸핑에 취약합니다.</p>
+                    </div>
+                    <div class="memory-segment" style="border-left-color: #3498db;">
+                        <h3>2세대: Stateful Inspection</h3>
+                        <p><strong>상태 추적:</strong> TCP 3-Way Handshake와 같은 세션의 상태(State Table)를 기억합니다. 외부에서 들어오는 응답 패킷이 내부에서 요청한 것인지 확인하여 동적으로 통제합니다.</p>
+                    </div>
+                    <div class="memory-segment" style="border-left-color: #2ecc71;">
+                        <h3>3세대: NGFW (차세대 방화벽)</h3>
+                        <p><strong>L7 계층 딥 인스펙션:</strong> 애플리케이션(카카오톡, 유튜브 등) 수준의 가시성을 확보하고, IPS(침입 방지) 기능과 샌드박스, 백신 기능이 하나의 장비로 통합된 형태입니다.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="content-block">
+                <h2>3. 주요 네트워크 레벨 공격 (L2~L4)</h2>
+                <div class="split-grid mt-15">
+                    <div class="split-column">
+                        <h4 class="text-danger"><i class="fas fa-network-wired"></i> L2: ARP Spoofing (Sniffing)</h4>
+                        <p>동일한 로컬 네트워크(LAN) 내에서 공격자가 자신의 MAC 주소를 라우터(Gateway)의 MAC 주소로 속여, 희생자의 모든 트래픽을 가로채고 도청하는 중간자 공격(MITM)입니다. <br><strong>대응:</strong> 스위치의 ARP Inspection 활성화 및 정적(Static) ARP 테이블 구성.</p>
+                    </div>
+                    <div class="split-column">
+                        <h4 class="text-danger"><i class="fas fa-bolt"></i> L4: SYN Flooding (DDoS)</h4>
+                        <p>TCP의 연결 구조를 악용한 공격으로, 존재하지 않는 IP로 수많은 SYN 패킷만 보내고 ACK를 응답하지 않아 서버의 'Backlog Queue(대기 공간)'를 가득 채워 마비시키는 서비스 거부 공격입니다. <br><strong>대응:</strong> TCP SYN Cookie 활성화 및 방화벽의 세션 제한 설정.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="content-block bg

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>InfoSec Hub | Security Portfolio</title>
+  </head>
+  <body class="dark-theme">
+    <div class="bg-gradient-overlay"></div>
+
+    <header class="main-header">
+      <div class="header-container">
+        <a href="index.html" class="logo">
+          <i class="fas fa-shield-halved"></i> InfoSec Hub
+        </a>
+        <nav class="desktop-nav">
+          <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#domains">Domains</a></li>
+            <li class="dropdown">
+              <a href="#none">Study <i class="fas fa-chevron-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="forensics.html">Forensics</a></li>
+                <li><a href="pwnable.html">Pwnable</a></li>
+                <li><a href="reversing.html">Reversing</a></li>
+                <li><a href="hardening.html">Hardening</a></li>
+                <li><a href="network.html">Network</a></li>
+              </ul>
+            </li>
+            <li><a href="team.html">Portfolio</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu-header">
+        <h2>Menu</h2>
+        <button id="close-btn" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Project</a></li>
+        <li><a href="forensics.html">Forensics</a></li>
+        <li><a href="pwnable.html">Pwnable</a></li>
+        <li><a href="reversing.html">Reversing</a></li>
+        <li><a href="hardening.html">Hardening</a></li>
+        <li><a href="network.html">Network</a></li>
+        <li><a href="team.html">Team Portfolio</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <section id="home" class="hero-section">
+        <div class="hero-content">
+          <span class="badge">팀 프로젝트</span>
+          <h1 class="gradient-text">
+            미래의 정보보호 전문가를 위한<br />지식 아카이브
+          </h1>
+          <p>
+            보안 기술 스택을 체계적으로 문서화하고 시각화한 반응형 웹
+            플랫폼입니다. 우리들의 학습 여정을 지금 확인해보세요.
+          </p>
+          <div class="hero-buttons">
+            <a href="#domains" class="btn-primary">프로젝트 탐색</a>
+            <a href="team.html" class="btn-secondary">팀원 포트폴리오</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop"
+            alt="보안 코드 배경 이미지"
+            class="floating-img"
+          />
+        </div>
+      </section>
+
+      <section id="about" class="about-section">
+        <div class="section-title text-center">
+          <h2>Why We Built This</h2>
+          <p>전공 지식의 아카이빙</p>
+        </div>
+        <div class="about-container">
+          <div class="about-text">
+            <h3>정보보호학 전공자들의 코어 기술 요약집</h3>
+            <p>
+              현대 정보보안은 공격(Offensive)과 방어(Defensive), 그리고
+              분석(Analysis) 기술의 유기적인 결합을 요구합니다. 본 웹사이트는
+              학습한 핵심 보안 도메인을 하나의 플랫폼에 모아두기 위해
+              기획되었습니다.
+            </p>
+            <ul class="check-list">
+              <li>
+                <i class="fas fa-check-circle"></i> 복잡한 보안 개념의 시각적
+                구조화
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> 각 팀원별 관심 분야(포렌식,
+                리버싱 등) 조사
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> 기기 환경에 구애받지 않는
+                반응형 웹(Responsive Web) 적용
+              </li>
+            </ul>
+          </div>
+          <div class="about-stats">
+            <div class="stat-box">
+              <span class="stat-num">5</span>
+              <span class="stat-label">Security Domains</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">3</span>
+              <span class="stat-label">Team Members</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">100%</span>
+              <span class="stat-label">Responsive Design</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="domains" class="grid-section">
+        <div class="section-title text-center">
+          <h2>Core Security Domains</h2>
+          <p>이미지를 클릭하면 상세 페이지로 이동합니다.</p>
+        </div>
+
+        <div class="portfolio-grid">
+          <a href="forensics.html" class="grid-card">
+            <div class="card-image">
+              <div class="overlay-icon"><i class="fas fa-search"></i></div>
+              <img
+                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=500&auto=format&fit=crop"
+                alt="디지털 포렌식"
+              />
+            </div>
+            <div class="card-content">
+              <span class="tag">Analysis</span>
+              <h3>Digital Forensics</h3>
+              <p>
+                데이터 흔적을 추적하고 분석하여 침해사고의 원인을 밝히는 기술
+              </p>
+            </div>
+          </a>
+
+          <a href="pwnable.html" class="grid-card">
+            <div class="card-image">
+              <div class="overlay-icon"><i class="fas fa-bug"></i></div>
+              <img
+                src="data:image/jpeg;base64,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"
+                alt="포너블"
+              />
+            </div>
+            <div class="card-content">
+              <span class="tag">Offensive</span>
+              <h3>Pwnable</h3>
+              <p>
+                메모리 구조의 취약점을 분석하고 익스플로잇하여 시스템 권한을
+                획득하는 기술
+              </p>
+            </div>
+          </a>
+
+          <a href="reversing.html" class="grid-card">
+            <div class="card-image">
+              <div class="overlay-icon"><i class="fas fa-code-branch"></i></div>
+              <img
+                src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=500&auto=format&fit=crop"
+                alt="리버싱"
+              />
+            </div>
+            <div class="card-content">
+              <span class="tag">Analysis</span>
+              <h3>Reversing</h3>
+              <p>
+                완성된 소프트웨어의 바이너리를 역공학으로 분석하여 동작 원리를
+                파악하는 기술
+              </p>
+            </div>
+          </a>
+
+          <a href="hardening.html" class="grid-card">
+            <div class="card-image">
+              <div class="overlay-icon"><i class="fas fa-shield-alt"></i></div>
+              <img
+                src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=500&auto=format&fit=crop"
+                alt="하드닝"
+              />
+            </div>
+            <div class="card-content">
+              <span class="tag">Defensive</span>
+              <h3>System Hardening</h3>
+              <p>
+                서버, OS의 보안 설정을 강화하여 공격 표면(Attack Surface)을
+                최소화하는 기술
+              </p>
+            </div>
+          </a>
+
+          <a href="network.html" class="grid-card">
+            <div class="card-image">
+              <div class="overlay-icon">
+                <i class="fas fa-network-wired"></i>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=500&auto=format&fit=crop"
+                alt="네트워크 보안"
+              />
+            </div>
+            <div class="card-content">
+              <span class="tag">Defensive</span>
+              <h3>Network Security</h3>
+              <p>
+                방화벽, IDS/IPS를 통해 트래픽을 감시하고 비정상적인 접근을
+                차단하는 기술
+              </p>
+            </div>
+          </a>
+
+          <a href="team.html" class="grid-card highlight-card">
+            <div class="card-image">
+              <div class="overlay-icon"><i class="fas fa-users"></i></div>
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=500&auto=format&fit=crop"
+                alt="팀 포트폴리오"
+              />
+            </div>
+            <div class="card-content">
+              <span class="tag tag-special">Team</span>
+              <h3>Portfolio & GitHub</h3>
+              <p>
+                프로젝트를 제작한 팀원들의 개별 포트폴리오와 배포 링크 확인하기
+              </p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="tech-section">
+        <div class="section-title text-center">
+          <h2>Development Tech Stack</h2>
+          <p>본 웹사이트를 구축하는 데 사용된 기술들입니다.</p>
+        </div>
+        <div class="tech-icons">
+          <div class="tech-item">
+            <i class="fab fa-html5"></i>
+            <span>HTML5</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-css3-alt"></i>
+            <span>CSS3</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-js"></i>
+            <span>JavaScript</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-github"></i>
+            <span>GitHub Pages</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-shield-halved"></i> InfoSec Hub
+        </div>
+        <p>Joongbu University - Information Security Major</p>
+        <p>
+          &copy; 2026 Designed by Jeong Il-jae, Kwon Do-young, Jo Ha-yul. All
+          rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

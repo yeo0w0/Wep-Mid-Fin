@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>InfoSec Hub | Reverse Engineering</title>
+  </head>
+  <body class="dark-theme sub-page">
+    <div class="bg-gradient-overlay"></div>
+
+    <header class="main-header">
+      <div class="header-container">
+        <a href="index.html" class="logo">
+          <i class="fas fa-shield-halved"></i> InfoSec Hub
+        </a>
+        <nav class="desktop-nav">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+              <a href="#none" class="active"
+                >Study <i class="fas fa-chevron-down"></i
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="forensics.html">Forensics</a></li>
+                <li><a href="pwnable.html">Pwnable</a></li>
+                <li><a href="reversing.html" class="active">Reversing</a></li>
+                <li><a href="hardening.html">Hardening</a></li>
+                <li><a href="network.html">Network</a></li>
+              </ul>
+            </li>
+            <li><a href="team.html">Portfolio</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu-header">
+        <h2>Menu</h2>
+        <button id="close-btn" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="forensics.html">Forensics</a></li>
+        <li><a href="pwnable.html">Pwnable</a></li>
+        <li><a href="reversing.html" class="active">Reversing</a></li>
+        <li><a href="hardening.html">Hardening</a></li>
+        <li><a href="network.html">Network</a></li>
+        <li><a href="team.html">Portfolio</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <section
+        class="page-header"
+        style="
+          background-image:
+            linear-gradient(rgba(26, 28, 44, 0.85), rgba(26, 28, 44, 0.98)),
+            url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop');
+        "
+      >
+        <div class="page-header-content text-center">
+          <span class="category-badge">Analysis Domain</span>
+          <h1 class="gradient-text">Reverse Engineering</h1>
+          <p>
+            바이너리의 구조를 파헤치고 악성코드의 은닉된 로직을 역추적하는 분석
+            기술
+          </p>
+          <div class="author-info">
+            <img
+              src="https://ui-avatars.com/api/?name=Kwon+Doyoung&background=00d4ff&color=fff"
+              alt="권도영"
+              class="author-avatar"
+            />
+            <span>Written by <strong>권도영</strong></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-container">
+        <article class="content-block intro-block">
+          <h2>1. 리버스 엔지니어링의 본질</h2>
+          <p>
+            리버싱(Reversing)은 완성된 바이너리(실행 파일)를
+            디스어셈블(Disassemble) 및 디컴파일(Decompile)하여 소스 코드가 없는
+            상태에서도 프로그램의 내부 로직과 알고리즘을 파악하는 역공학
+            기술입니다. 주로
+            <strong
+              >악성코드(Malware) 분석, 소프트웨어 취약점 탐지(0-day), 침해사고
+              원인 분석</strong
+            >에 핵심적으로 사용됩니다.
+          </p>
+        </article>
+
+        <article class="content-block bg-darker">
+          <h2>2. Windows PE (Portable Executable) 구조 분석</h2>
+          <p class="block-desc">
+            Windows 환경에서 실행되는 파일(.exe, .dll, .sys)의 내부 포맷입니다.
+            리버서는 이 PE 헤더를 분석하여 프로그램이 메모리에 어떻게 적재되는지
+            파악합니다.
+          </p>
+
+          <div class="memory-grid mt-15">
+            <div class="memory-segment" style="border-left-color: #f39c12">
+              <h3>1. DOS Header & Stub</h3>
+              <p>
+                호환성을 위한 영역입니다. 파일의 맨 앞 2바이트는 항상
+                <code>MZ (4D 5A)</code>로 시작하며, DOS 환경에서 실행 시 "This
+                program cannot be run in DOS mode"라는 메시지를 출력합니다.
+              </p>
+            </div>
+            <div class="memory-segment" style="border-left-color: #3498db">
+              <h3>2. NT Headers</h3>
+              <p>
+                PE 파일의 핵심 정보가 담겨있습니다.
+                <code>PE (50 45 00 00)</code> 시그니처로 시작하며, File Header와
+                Optional Header로 구성됩니다. (진입점 주소인
+                <strong>OEP(Original Entry Point)</strong> 정보 포함)
+              </p>
+            </div>
+            <div class="memory-segment" style="border-left-color: #9b59b6">
+              <h3>3. Section Headers</h3>
+              <p>
+                각 섹션의 속성(크기, 위치, 권한)을 정의합니다. 대표적으로
+                <code>.text</code>(코드), <code>.data</code>(초기화된 데이터),
+                <code>.rdata</code>(읽기 전용 데이터) 등이 있습니다.
+              </p>
+            </div>
+            <div class="memory-segment" style="border-left-color: #e74c3c">
+              <h3>4. IAT / EAT (Import/Export Table)</h3>
+              <p>
+                프로그램이 어떤 라이브러리(DLL)의 어떤 API 함수를
+                사용하는지(IAT), 또는 외부로 제공하는지(EAT) 기록된
+                테이블입니다. 악성코드 행위 분석의 첫 단추입니다.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="content-block">
+          <h2>3. 어셈블리어와 Calling Convention</h2>
+          <p>
+            C/C++ 함수가 호출될 때 인자(Argument)를 전달하고 스택(Stack)을
+            정리하는 규칙입니다. 디스어셈블된 코드를 볼 때 이 규약을 알아야 함수
+            분석이 가능합니다.
+          </p>
+
+          <div class="split-grid mt-15">
+            <div class="split-column">
+              <h4 class="text-accent">cdecl (C Declaration)</h4>
+              <ul class="feature-list">
+                <li>주로 C 언어에서 사용되는 기본 규약입니다.</li>
+                <li>
+                  인자를 스택에 푸시할 때
+                  <strong>오른쪽에서 왼쪽</strong> 순서로 넣습니다.
+                </li>
+                <li>
+                  <strong>호출자(Caller)</strong>가 스택을 정리합니다. (예:
+                  <code>add esp, 8</code>)
+                </li>
+                <li>
+                  가변 길이 인자(예: <code>printf</code>) 처리에 적합합니다.
+                </li>
+              </ul>
+            </div>
+            <div class="split-column">
+              <h4 class="text-danger">stdcall (Standard Call)</h4>
+              <ul class="feature-list">
+                <li>
+                  Windows API(Win32 API)에서 기본적으로 사용하는 규약입니다.
+                </li>
+                <li>인자는 동일하게 오른쪽에서 왼쪽으로 푸시합니다.</li>
+                <li>
+                  <strong>피호출자(Callee)</strong>가 스택을 직접 정리하고
+                  반환합니다. (예: <code>ret 8</code>)
+                </li>
+                <li>코드 크기가 상대적으로 작아집니다.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="content-block bg-darker">
+          <h2>4. 고급 분석 방해 기법 (Anti-Reversing)</h2>
+          <p class="block-desc">
+            악성코드 분석가들을 속이고 지연시키기 위해 공격자들이 사용하는
+            기술들입니다.
+          </p>
+
+          <div class="tools-grid mt-15">
+            <div class="tool-item">
+              <h4 class="text-accent">
+                <i class="fas fa-shield-virus"></i> Anti-Debugging API
+              </h4>
+              <p>
+                <code>IsDebuggerPresent()</code>,
+                <code>CheckRemoteDebuggerPresent()</code> 같은 API를 호출하여
+                디버거 환경을 탐지하고, 탐지 시 악성 행위를 숨기거나 강제
+                종료합니다. 리버서는 이 API의 리턴값을 조작하여 우회합니다.
+              </p>
+            </div>
+            <div class="tool-item">
+              <h4 class="text-accent">
+                <i class="fas fa-microchip"></i> PEB 조작 및 우회
+              </h4>
+              <p>
+                Process Environment Block(PEB)의
+                <code>BeingDebugged</code> 플래그나 <code>NtGlobalFlag</code>를
+                직접 참조하여 디버깅을 탐지합니다. 동적 분석 시 해당 메모리 값을
+                강제로 0으로 변조(Patch)해야 분석이 가능합니다.
+              </p>
+            </div>
+            <div class="tool-item">
+              <h4 class="text-accent">
+                <i class="fas fa-server"></i> Anti-VM / Sandbox Evasion
+              </h4>
+              <p>
+                VMware, VirtualBox 등의 가상머신 또는 샌드박스 환경에서 실행
+                중인지 <code>CPUID</code> 명령어나 특정 레지스트리 키, MAC
+                주소를 통해 확인하고 분석 환경을 회피합니다.
+              </p>
+            </div>
+            <div class="tool-item">
+              <h4 class="text-accent">
+                <i class="fas fa-box-open"></i> Packing & Obfuscation
+              </h4>
+              <p>
+                UPX, Themida 같은 패커(Packer)를 사용해 원본 코드를 암호화하여
+                정적 분석을 막습니다. OEP(Original Entry Point)를 찾아 메모리를
+                덤프하는 언패킹(Unpacking) 기술이 필요합니다.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="content-block">
+          <h2>5. 핵심 리버싱 도구 (Tools)</h2>
+          <div class="tools-list">
+            <div class="tool-row">
+              <div class="tool-img"><i class="fas fa-project-diagram"></i></div>
+              <div class="tool-desc">
+                <h3>IDA Pro / Ghidra</h3>
+                <p>
+                  전 세계 표준 정적 분석 도구입니다. 바이너리를 어셈블리 코드로
+                  변환하고 제어 흐름 그래프(CFG)를 제공하며, Ghidra는 강력한
+                  디컴파일러(C 코드 복원) 기능을 무료로 제공합니다.
+                </p>
+              </div>
+            </div>
+            <div class="tool-row">
+              <div class="tool-img"><i class="fas fa-play"></i></div>
+              <div class="tool-desc">
+                <h3>x64dbg</h3>
+                <p>
+                  Windows 환경에서 가장 널리 쓰이는 오픈소스 동적 디버거입니다.
+                  레지스터 변화를 실시간으로 확인하고 중단점(Breakpoint)을
+                  설정하여 메모리를 분석합니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-shield-halved"></i> InfoSec Hub
+        </div>
+        <p>Joongbu University - Information Security Major</p>
+        <p>
+          &copy; 2026 Designed by Jeong Il-jae, Kwon Do-young, Jo Ha-yul. All
+          rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

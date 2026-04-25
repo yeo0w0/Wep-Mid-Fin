@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>InfoSec Hub | System Hardening</title>
+  </head>
+  <body class="dark-theme sub-page">
+    <div class="bg-gradient-overlay"></div>
+
+    <header class="main-header">
+      <div class="header-container">
+        <a href="index.html" class="logo">
+          <i class="fas fa-shield-halved"></i> InfoSec Hub
+        </a>
+        <nav class="desktop-nav">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+              <a href="#none" class="active"
+                >Study <i class="fas fa-chevron-down"></i
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="forensics.html">Forensics</a></li>
+                <li><a href="pwnable.html">Pwnable</a></li>
+                <li><a href="reversing.html">Reversing</a></li>
+                <li><a href="hardening.html" class="active">Hardening</a></li>
+                <li><a href="network.html">Network</a></li>
+              </ul>
+            </li>
+            <li><a href="team.html">Portfolio</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu-header">
+        <h2>Menu</h2>
+        <button id="close-btn" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="forensics.html">Forensics</a></li>
+        <li><a href="pwnable.html">Pwnable</a></li>
+        <li><a href="reversing.html">Reversing</a></li>
+        <li><a href="hardening.html" class="active">Hardening</a></li>
+        <li><a href="network.html">Network</a></li>
+        <li><a href="team.html">Portfolio</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <section
+        class="page-header"
+        style="
+          background-image:
+            linear-gradient(rgba(26, 28, 44, 0.85), rgba(26, 28, 44, 0.98)),
+            url('https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop');
+        "
+      >
+        <div class="page-header-content text-center">
+          <span class="category-badge success-badge">Defensive Domain</span>
+          <h1 class="gradient-text">System Hardening</h1>
+          <p>
+            인프라의 공격 표면(Attack Surface)을 최소화하고 심층 방어(Defense in
+            Depth)를 구현하는 인프라 보안 핵심 기술
+          </p>
+          <div class="author-info">
+            <img src="/hayul_img.png" alt="조하율" class="author-avatar" />
+            <span>Written by <strong>조하율</strong></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-container">
+        <article class="content-block intro-block">
+          <h2>1. 시스템 하드닝과 심층 방어 (Defense in Depth)</h2>
+          <p>
+            시스템 하드닝(System Hardening)은 OS, 웹 서버, 데이터베이스,
+            클라우드 인프라 전반에서 기본(Default) 설정이 가지는 취약점을
+            제거하여 해커의 <strong>'공격 표면(Attack Surface)'</strong>을
+            줄이는 과정입니다. 단일 보안 솔루션에 의존하지 않고, 네트워크부터
+            애플리케이션, 데이터 계층까지 다중 방어벽을 구축하는 '심층 방어'
+            전략의 기반이 됩니다.
+          </p>
+        </article>
+
+        <article class="content-block bg-darker">
+          <h2>2. 엔터프라이즈 OS 하드닝 전략</h2>
+          <p class="block-desc">
+            기업 환경에서 가장 많이 사용되는 Linux와 Windows Server의 핵심 방어
+            메커니즘입니다.
+          </p>
+
+          <div class="split-grid mt-15">
+            <div class="split-column">
+              <h4 class="text-success">
+                <i class="fab fa-linux"></i> Linux Hardening (MAC & PAM)
+              </h4>
+              <ul class="feature-list mt-10">
+                <li>
+                  <strong>SELinux / AppArmor:</strong> 기존의 임의 접근
+                  통제(DAC)를 넘어, 프로세스가 특정 파일이나 자원에 접근하는
+                  것을 OS 커널 수준에서 강력히 통제하는
+                  <strong>강제 접근 통제(MAC)</strong>를 활성화합니다.
+                </li>
+                <li>
+                  <strong>PAM (Pluggable Authentication Modules):</strong>
+                  <code>/etc/security/pwquality.conf</code> 등을 수정하여
+                  패스워드 복잡도를 강제하고, <code>pam_tally2.so</code>를
+                  이용해 무차별 대입 공격(Brute Force) 시 계정을 잠급니다.
+                </li>
+                <li>
+                  <strong>불필요한 SUID/SGID 제거:</strong> 권한 상승
+                  공격(Privilege Escalation)을 막기 위해
+                  <code>find / -perm -4000</code> 명령어로 불필요한 SetUID
+                  비트를 제거합니다.
+                </li>
+              </ul>
+            </div>
+
+            <div class="split-column">
+              <h4 class="text-success">
+                <i class="fab fa-windows"></i> Windows Server (AD & GPO)
+              </h4>
+              <ul class="feature-list mt-10">
+                <li>
+                  <strong>GPO (Group Policy Object):</strong> Active Directory
+                  환경에서 수많은 서버와 클라이언트의 보안 정책(패스워드 길이,
+                  화면 보호기, 원격 접속 허용 IP 등)을 일괄적으로 배포하고
+                  강제합니다.
+                </li>
+                <li>
+                  <strong>SMB 보호:</strong> 랜섬웨어(WannaCry 등)의 주요 전파
+                  경로인 SMBv1 프로토콜을 레지스트리에서 비활성화하고, SMB
+                  Signing을 강제하여 중간자 공격(MITM)을 방어합니다.
+                </li>
+                <li>
+                  <strong>Credential Guard:</strong> 가상화 기반 보안(VBS)을
+                  사용하여 메모리에 평문이나 해시 형태로 남아있는 자격
+                  증명(NTLM, Kerberos 티켓)이 Mimikatz 등에 의해 탈취되는 것을
+                  막습니다.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="content-block">
+          <h2>3. 모던 인프라: 컨테이너 하드닝 (Docker & K8s)</h2>
+          <p>
+            최근 IT 인프라가 클라우드 네이티브로 전환되면서, 가상화
+            환경(컨테이너)에 대한 하드닝이 필수 요소로 자리 잡았습니다.
+          </p>
+
+          <div class="code-box mt-15">
+            <div class="code-header">
+              <span class="dot red"></span><span class="dot yellow"></span
+              ><span class="dot green"></span>
+              <span class="filename"
+                >docker-compose.yml (Hardening Example)</span
+              >
+            </div>
+            <pre><code>services:
+  web_app:
+    image: nginx:latest
+    # 1. Rootless Mode: 컨테이너 내부의 프로세스가 호스트의 root 권한을 가지지 않도록 제한
+    user: "1000:1000"
+    
+    # 2. Read-Only Root Filesystem: 컨테이너 실행 중 악성코드 다운로드 및 변조 방지
+    read_only: true
+    
+    # 3. Capabilities 제한: 컨테이너에 부여된 커널 권한을 모두 뺏고 필요한 것만 부여 (최소 권한의 원칙)
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE # 80포트 바인딩만 허용
+      
+    # 4. 자원 고갈(DoS) 공격 방지: 메모리 및 CPU 제한
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M</code></pre>
+          </div>
+        </article>
+
+        <article class="content-block bg-darker">
+          <h2>4. 애플리케이션 보안: HTTP Security Headers</h2>
+          <p class="block-desc">
+            웹 서버(Apache, Nginx) 설정 파일에 보안 헤더를 추가하여
+            클라이언트(브라우저) 측의 취약점을 완화합니다.
+          </p>
+
+          <div class="memory-grid mt-15">
+            <div class="memory-segment">
+              <h4 class="text-accent">X-Frame-Options</h4>
+              <p>
+                <code>DENY</code> 또는 <code>SAMEORIGIN</code>으로 설정하여
+                공격자가 보이지 않는 iframe을 띄워 클릭을 유도하는
+                <strong>Clickjacking 공격</strong>을 완벽히 차단합니다.
+              </p>
+            </div>
+            <div class="memory-segment">
+              <h4 class="text-accent">Strict-Transport-Security (HSTS)</h4>
+              <p>
+                브라우저가 해당 사이트에 접근할 때 반드시 HTTPS 암호화 통신만
+                사용하도록 강제하여, 중간자 공격(MITM) 및 다운그레이드 공격을
+                방어합니다.
+              </p>
+            </div>
+            <div class="memory-segment">
+              <h4 class="text-accent">Content-Security-Policy (CSP)</h4>
+              <p>
+                웹 페이지에서 로드할 수 있는 스크립트, 이미지 등의
+                출처(Domain)를 화이트리스트로 명시하여
+                <strong>XSS(크로스 사이트 스크립팅) 공격</strong>을 효과적으로
+                방어합니다.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="content-block">
+          <h2>5. 컴플라이언스(Compliance) 및 감사 도구</h2>
+          <div class="tools-grid mt-15">
+            <div class="tool-item">
+              <h4 class="text-success">
+                <i class="fas fa-book-reader"></i> CIS Benchmarks
+              </h4>
+              <p>
+                Center for Internet Security에서 제공하는 가장 공신력 있는
+                시스템 보안 설정 표준입니다. 클라우드(AWS, GCP), OS, DB 등
+                전방위적인 하드닝 지침을 제공합니다.
+              </p>
+            </div>
+            <div class="tool-item">
+              <h4 class="text-success">
+                <i class="fas fa-robot"></i> OpenSCAP
+              </h4>
+              <p>
+                시스템 설정이 CIS Benchmarks나 NIST 표준을 준수하고 있는지
+                자동으로 검사(Scanning)하고 리포트를 생성해 주는 오픈소스 인프라
+                규정 준수 도구입니다.
+              </p>
+            </div>
+            <div class="tool-item">
+              <h4 class="text-success">
+                <i class="fas fa-search-shield"></i> Lynis
+              </h4>
+              <p>
+                Linux/Unix 기반 시스템의 내부 깊숙한 곳까지 보안 설정을 스캔하여
+                취약한 항목을 찾고, 하드닝 개선 명령어를 직관적으로 제안하는
+                감사(Audit) 도구입니다.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-shield-halved"></i> InfoSec Hub
+        </div>
+        <p>Joongbu University - Information Security Major</p>
+        <p>
+          &copy; 2026 Designed by Jeong Il-jae, Kwon Do-young, Jo Ha-yul. All
+          rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>InfoSec Hub | Team Portfolio</title>
+  </head>
+  <body class="dark-theme sub-page">
+    <div class="bg-gradient-overlay"></div>
+
+    <header class="main-header">
+      <div class="header-container">
+        <a href="index.html" class="logo">
+          <i class="fas fa-shield-halved"></i> InfoSec Hub
+        </a>
+        <nav class="desktop-nav">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+              <a href="#none">Study <i class="fas fa-chevron-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="forensics.html">Forensics</a></li>
+                <li><a href="pwnable.html">Pwnable</a></li>
+                <li><a href="reversing.html">Reversing</a></li>
+                <li><a href="hardening.html">Hardening</a></li>
+                <li><a href="network.html">Network</a></li>
+              </ul>
+            </li>
+            <li><a href="team.html" class="active">Portfolio</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu-header">
+        <h2>Menu</h2>
+        <button id="close-btn" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="forensics.html">Forensics</a></li>
+        <li><a href="pwnable.html">Pwnable</a></li>
+        <li><a href="reversing.html">Reversing</a></li>
+        <li><a href="hardening.html">Hardening</a></li>
+        <li><a href="network.html">Network</a></li>
+        <li><a href="team.html" class="active">Portfolio</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <section
+        class="page-header"
+        style="
+          background-image:
+            linear-gradient(rgba(26, 28, 44, 0.85), rgba(26, 28, 44, 0.98)),
+            url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop');
+        "
+      >
+        <div class="page-header-content text-center">
+          <span class="category-badge tag-special">Our Team</span>
+          <h1 class="gradient-text">Team Portfolio & Vision</h1>
+          <p>
+            중부대학교 정보보호학 전공, 사이버 공간을 수호할 예비 보안
+            전문가들의 역량 기록서
+          </p>
+        </div>
+      </section>
+
+      <section class="content-container">
+        <div class="section-title text-center mb-40">
+          <h2>Project Members</h2>
+          <p>
+            각자의 기술적 강점을 결합하여 시너지를 창출한 팀원들을 소개합니다.
+          </p>
+        </div>
+
+        <div class="team-profile-grid">
+          <div class="profile-card leader-card">
+            <div class="profile-header">
+              <img src="/avatar_img.png" alt="정일재" class="profile-img" />
+              <span class="leader-badge"
+                ><i class="fas fa-crown"></i> Project Manager</span
+              >
+            </div>
+            <div class="profile-body">
+              <h3>정일재</h3>
+              <p class="profile-role text-accent">
+                Architecture / Forensics / Pwnable
+              </p>
+
+              <p class="profile-desc">
+                프로젝트의 전체 아키텍처를 설계하고, 시스템 메모리 구조 기반의
+                포너블(Pwnable) 및 디지털 포렌식 파트를 총괄한 중부대학교
+                정보보호학 2학년입니다.
+              </p>
+              <p class="profile-desc">
+                매일 저녁 달리기를 실천하며 기른 강인한 체력과 인내심을
+                바탕으로, 장기적인 문제 해결 능력이 필수적인 포너블(Wargame),
+                포렌식(Digital Forensics) 분야에 흥미를 느끼고 있습니다. 내년 초
+                공군 정보보호병 입대를 통해 실전 방어 능력을 배양한 뒤, 향후
+                사이버 수사대에서 국가와 기업의 핵심 자산을 수호하는 보안
+                전문가가 되는 것을 목표로 하고 있습니다.
+              </p>
+
+              <div class="profile-skills mt-15">
+                <span>Python / C</span>
+                <span>Memory Exploit</span>
+                <span>Digital Forensics</span>
+                <span>Dreamhack CTF</span>
+              </div>
+            </div>
+            <div class="profile-footer">
+              <a href="https://github.com/iljae627" class="social-link"
+                ><i class="fab fa-github"></i> GitHub</a
+              >
+              <a href="https://iljae627.github.io/" class="social-link"
+                ><i class="fas fa-file-code"></i> Portfolio</a
+              >
+              <a href="https://blog.naver.com/iljae627" class="social-link"
+                ><i class="fas fa-file-code"></i> Naver Blog</a
+              >
+              <a href="https://wep-mid.vercel.app/" class="social-link"
+                ><i class="fas fa-envelope"></i> 배포 주소</a
+              >
+            </div>
+          </div>
+
+          <div class="profile-card">
+            <div class="profile-header">
+              <img
+                src="https://ui-avatars.com/api/?name=Kwon+Doyoung&background=9b59b6&color=fff&size=120"
+                alt="권도영"
+                class="profile-img"
+              />
+            </div>
+            <div class="profile-body">
+              <h3>권도영</h3>
+              <p class="profile-role" style="color: #9b59b6">
+                UI/UX Design / Reversing
+              </p>
+              <p class="profile-desc">
+                본 웹사이트의 다크 테마 및 네온 그라데이션 브랜드
+                아이덴티티(BI)를 구축하고, 리버스 엔지니어링 콘텐츠를 심층적으로
+                분석한 악성코드 분석 꿈나무입니다. 난해한 어셈블리어와 안티
+                디버깅(Anti-Debugging) 기법의 동작 원리를 구조화하여 시각적으로
+                풀어내는 데 탁월한 능력을 발휘했습니다.
+              </p>
+              <p class="profile-desc">
+                x64dbg와 IDA Pro를 활용한 동적/정적 분석 기술을 지속적으로
+                연마하고 있으며, 사용자 친화적인 웹 인터페이스 설계 능력까지
+                겸비하여 보안 위협 정보를 대시보드 형태로 완벽하게 시각화할 수
+                있는 보안 솔루션 개발자를 목표로 정진하고 있습니다.
+              </p>
+              <div class="profile-skills mt-15">
+                <span>x86 Assembly</span>
+                <span>IDA Pro / x64dbg</span>
+                <span>CSS3 Variables</span>
+                <span>Malware Analysis</span>
+              </div>
+            </div>
+            <div class="profile-footer">
+              <a href="https://github.com/kwondo0" class="social-link"
+                ><i class="fab fa-github"></i> GitHub</a
+              >
+              <a
+                href="https://kwondo0.github.io/-/"
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fas fa-file-code"></i> Project Link
+              </a>
+            </div>
+          </div>
+
+          <div class="profile-card">
+            <div class="profile-header">
+              <img src="/hayul_img.png" alt="조하율" class="profile-img" />
+            </div>
+            <div class="profile-body">
+              <h3>조하율</h3>
+              <p class="profile-role text-success">
+                Web Publishing / Infra Security
+              </p>
+              <p class="profile-desc">
+                프로젝트의 미디어 쿼리(Media Queries)와 자바스크립트를 활용한
+                반응형 웹 엔진 구현을 전담했으며, 시스템 하드닝 및 네트워크 보안
+                콘텐츠를 작성하여 인프라 방어의 핵심을 문서화했습니다.
+              </p>
+              <p class="profile-desc">
+                OSI 7계층 트래픽 분석(Wireshark, Snort)에 깊은 관심을 가지고
+                있으며, 최근 트렌드인 클라우드 네이티브 환경(Docker,
+                Kubernetes)에서의 보안 설정(Hardening) 및 제로 트러스트(Zero
+                Trust) 아키텍처 구축 방안을 깊이 있게 연구 중인 차세대 클라우드
+                보안 엔지니어입니다.
+              </p>
+              <div class="profile-skills mt-15">
+                <span>Network Traffic</span>
+                <span>Snort / Suricata</span>
+                <span>Responsive Web</span>
+                <span>Linux Hardening</span>
+              </div>
+            </div>
+            <div class="profile-footer">
+              <a href="https://github.com/yeo0w0/" class="social-link"
+                ><i class="fab fa-github"></i> GitHub</a
+              >
+              <a href="https://blog.naver.com/banannaish" class="social-link"
+                ><i class="fas fa-file-code"></i> Blog</a
+              >
+              <a href="#" class="social-link"
+                ><i class="fas fa-envelope"></i> 배포 주소</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <article class="content-block bg-darker mt-40">
+          <h2>Our Journey & Tech Stack</h2>
+          <p class="block-desc">
+            아이디어 기획부터 반응형 포트폴리오 웹사이트 배포까지의 과정입니다.
+          </p>
+
+          <div class="split-grid mt-15">
+            <div class="split-column">
+              <h4 class="text-accent">
+                <i class="fas fa-route"></i> Project Roadmap
+              </h4>
+              <ul class="feature-list">
+                <li>
+                  <strong>Week 1 (기획):</strong> 5대 보안 도메인 선정 및
+                  레이아웃(IA) 설계
+                </li>
+                <li>
+                  <strong>Week 2 (디자인):</strong> CSS 변수 기반 다크
+                  테마/그리드 시스템 확립
+                </li>
+                <li>
+                  <strong>Week 3 (개발):</strong> HTML5 시맨틱 태그 구조화 및
+                  모바일 반응형(JS) 적용
+                </li>
+                <li>
+                  <strong>Week 4 (콘텐츠):</strong> 분야별 심화 보안 지식(코드
+                  스니펫 포함) 작성
+                </li>
+                <li>
+                  <strong>Week 5 (배포):</strong> GitHub Pages 연동 및 브라우저
+                  크로스 체킹 완료
+                </li>
+              </ul>
+            </div>
+            <div class="split-column">
+              <h4 class="text-accent">
+                <i class="fas fa-tools"></i> Collaboration Tools
+              </h4>
+              <ul class="feature-list">
+                <li>
+                  <strong>GitHub:</strong> 형상 관리 및 소스 코드 버전 통제
+                  (Branch & Merge)
+                </li>
+                <li>
+                  <strong>Discord / Notion:</strong> 실시간 커뮤니케이션 및 기술
+                  문서 아카이빙
+                </li>
+                <li>
+                  <strong>FontAwesome / Google Fonts:</strong> 직관적인 UI
+                  아이콘 및 Noto Sans KR 타이포그래피 적용
+                </li>
+                <li>
+                  <strong>Unsplash API:</strong> 고화질 보안/해킹 테마 에셋
+                  이미지 활용
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-shield-halved"></i> InfoSec Hub
+        </div>
+        <p>Joongbu University - Information Security Major</p>
+        <p>
+          &copy; 2026 Designed by Jeong Il-jae, Kwon Do-young, Jo Ha-yul. All
+          rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
